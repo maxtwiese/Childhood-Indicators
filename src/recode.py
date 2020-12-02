@@ -97,13 +97,13 @@ def recoder(df):
         (df.HALLUCEVR == 1) | (df.INHALEVER == 1) | (df.METHAMEVR == 1) |
         (df.PNRANYLIF == 1) | (df.TRQANYLIF == 1) | (df.STMANYLIF == 1) |
         (df.SEDANYLIF == 1) | (df.PNRNMLIF == 1) | (df.COLDMEDS == 1),
-        'DRUGS'] = 1
+        'FURTHER'] = 1
 
     df.loc[ (df.COCEVER != 1) & (df.CRKEVER != 1) & (df.HEREVER != 1) &
         (df.HALLUCEVR != 1) & (df.INHALEVER != 1) & (df.METHAMEVR != 1) &
         (df.PNRANYLIF != 1) & (df.TRQANYLIF != 1) & (df.STMANYLIF != 1) &
         (df.SEDANYLIF != 1) & (df.PNRNMLIF != 1) & (df.COLDMEDS != 1),
-        'DRUGS'] = 0
+        'FURTHER'] = 0
 
     df.drop(columns = ['CIGEVER', 'SMKLSSEVR', 'CIGAREVR', 'PIPEVER',
         'ALCEVER', 'MJEVER', 'COCEVER', 'CRKEVER', 'HEREVER', 'HALLUCEVR',
