@@ -23,7 +23,6 @@ plt.style.use('ggplot')
 plt.rcParams.update({'font.size':16})
 
 # Build the DataFrame, set the Base Model, & instantiate Model
-
 df = youth_df()
 df = recoder(df)
 df = imputer(df)
@@ -44,7 +43,6 @@ print(f"\nBase Model\n\tRecall: 1\n\tAccuracy: {no_skill:.3f}")
 print(f"Out of Box RF\n\tRecall: {out_of_box_recall:.3f}\n")
 
 # Find best threshold using Precision-Recall Curve to maximize F1-Score
-
 thresholds = []
 recalls = []
 fig1, ax1 = plt.subplots(figsize = (20, 15))
@@ -81,7 +79,6 @@ print('Cross Validated Recall/Treshold for MAX F1 Score')
     for recall, threshold in zip(recalls, thresholds)]
 
 # Get training recall with cross validation, fit to data, and test.
-
 thresh = thresholds[np.argmax(recalls)]
 recalls = []
 
@@ -102,7 +99,6 @@ print(f"An improvment of {rf.score(A_test,d_test) - no_skill:.3f} in acccuracy"\
     " from the no skill guess.\n")
 
 # Determine Feature Importance 
-
 def r2(rf, A_train, d_train):
     d_hat = rf.predict_proba(A_train)
     d_hat = (d_hat[:,1] >= thresh).astype('int')
