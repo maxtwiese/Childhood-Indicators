@@ -13,10 +13,10 @@
 
 ## <a name="Motivation">Motivation</a>
 
-Addiciton is a lion of a problem. After [link](https://www.samhsa.gov/data/sites/default/files/WebFiles_TEDS_SR142_AgeatInit_07-10-14/TEDS-SR142-AgeatInit-2014.pdf)
+Addiciton is a lion of a problem. According to a Treatment Episode Data Set, [TEDS](https://www.samhsa.gov/data/sites/default/files/WebFiles_TEDS_SR142_AgeatInit_07-10-14/TEDS-SR142-AgeatInit-2014.pdf), 
 
 
-<img align="right" src="https://www.samhsa.gov/data/sites/default/files/WebFiles_TEDS_SR142_AgeatInit_07-10-14/TEDS-SR142-AgeatInit-2014-fig3.jpg">
+<img align="right" width=350 src="https://www.samhsa.gov/data/sites/default/files/WebFiles_TEDS_SR142_AgeatInit_07-10-14/TEDS-SR142-AgeatInit-2014-fig3.jpg">
 
 
 ## <a name="Data">Data</a>
