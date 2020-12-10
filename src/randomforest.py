@@ -15,7 +15,7 @@ from matplotlib.lines import Line2D
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import r2_score, recall_score, precision_recall_curve
+from sklearn.metrics import accuracy_score, recall_score, precision_recall_curve
 from sklearn.model_selection import cross_val_score, StratifiedKFold
 from rfpimp import permutation_importances
 from pipeline import build_vars, imputer, recoder, youth_df
@@ -99,23 +99,23 @@ print(f"An improvment of {rf.score(A_test,d_test) - no_skill:.3f} in acccuracy"\
     " from the no skill guess.\n")
 
 # Determine Feature Importance 
-def r2(rf, A_train, d_train):
+def acc(rf, A_train, d_train):
     d_hat = rf.predict_proba(A_train)
     d_hat = (d_hat[:,1] >= thresh).astype('int')
-    return r2_score(d_train, d_hat)
+    return accuracy_score(d_train, d_hat)
 
-perm_imp_rfpimp = permutation_importances(rf, A, d, r2)
+perm_imp_rfpimp = permutation_importances(rf, A, d, acc)
 
 ytl = [
 'Age', '# Students in your grade that\ndrink Alcohol', 
 'How would you feel if someone your\nage used Marijuana monthly?',
-'How would you feel if someone your\nage drank daily',
 'How would you feel if someone your\nage tried Marijuana?',
 'How would you feel if your friend\nused Marijuana monthly?',
+'How would you feel if someone your\nage drank daily',
+'# Students in your grade that\nget drunk',
 'How would you feel if your friend\ntried Marijuana?',
 'How often do you fight\nwith your parents?',
-'How would your parents feel if you\ntried Marijuana?',
-'# Students in your grade that\nsmoke Marijuana'
+'How would your parents feel if you\ntried Marijuana?'
 ]
 
 fig, ax = plt.subplots(figsize=(20, 15))

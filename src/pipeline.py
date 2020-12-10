@@ -14,8 +14,7 @@ cols = ['QUESTID2', 'AGE2', 'BOOKED', 'MOVSINPYR2', 'PDEN10', 'COUTYP4',
         'YOWRIMP', 'HEALTH', 'DIFFTHINK', 'YEPRBSLV', 'YEVIOPRV', 'YEDGPRGP',
         'YEDECLAS', 'YEDERGLR', 'YEDESPCL', 'YEPVNTYR', 'CIGEVER', 'SMKLSSEVR',
         'CIGAREVR', 'PIPEVER', 'ALCEVER', 'MJEVER', 'COCEVER', 'CRKEVER',
-        'HEREVER', 'HALLUCEVR', 'INHALEVER', 'METHAMEVR', 'PNRANYLIF',
-        'TRQANYLIF', 'STMANYLIF', 'SEDANYLIF', 'PNRNMLIF', 'COLDMEDS']
+        'HEREVER', 'HALLUCEVR', 'INHALEVER', 'METHAMEVR', 'PNRNMLIF', 'COLDMEDS']
 
 path = r'../data/NSDUH_2019.SAV'
 
@@ -25,6 +24,7 @@ def youth_df():
     df = pd.read_spss(path, usecols = cols)
     df = df.loc[df['AGE2'].isin([1, 2, 3, 4, 5, 6])]
     df.reset_index(inplace=True)
+    df.drop(columns=['index'], inplace=True)
     return df
 
 def recoder(df):
@@ -49,9 +49,9 @@ def recoder(df):
         value = np.nan, inplace=True)
 
     # Recode Environemntal Indicators
-    df.BOOKED = df.BOOKED.map({1:1, 2:0, 3: 1})
-    df.PDEN10 = df.PDEN10.map({1:2, 2: 1, 3: 0})
-    df.COUTYP4 = df.COUTYP4.map({1:2, 2: 1, 3: 0})
+    df.BOOKED = df.BOOKED.map({1: 1, 2:0, 3: 1})
+    df.PDEN10 = df.PDEN10.map({1: 2, 2: 1, 3: 0})
+    df.COUTYP4 = df.COUTYP4.map({1: 2, 2: 1, 3: 0})
 
     # Recode Peer/Social Indicators
     df.YESTSCIG = df.YESTSCIG.map({1: 0, 2: 1, 3: 2, 4: 3})
@@ -127,20 +127,17 @@ def recoder(df):
     df.loc[df.MJEVER != 1, 'CANNABIS'] = 0
     df.loc[ (df.COCEVER == 1) | (df.CRKEVER == 1) | (df.HEREVER == 1) |
         (df.HALLUCEVR == 1) | (df.INHALEVER == 1) | (df.METHAMEVR == 1) |
-        (df.PNRANYLIF == 1) | (df.TRQANYLIF == 1) | (df.STMANYLIF == 1) |
-        (df.SEDANYLIF == 1) | (df.PNRNMLIF == 1) | (df.COLDMEDS == 1),
+        (df.PNRNMLIF == 1) | (df.COLDMEDS == 1),
         'FURTHER'] = 1
     df.loc[ (df.COCEVER != 1) & (df.CRKEVER != 1) & (df.HEREVER != 1) &
         (df.HALLUCEVR != 1) & (df.INHALEVER != 1) & (df.METHAMEVR != 1) &
-        (df.PNRANYLIF != 1) & (df.TRQANYLIF != 1) & (df.STMANYLIF != 1) &
-        (df.SEDANYLIF != 1) & (df.PNRNMLIF != 1) & (df.COLDMEDS != 1),
+        (df.PNRNMLIF != 1) & (df.COLDMEDS != 1),
         'FURTHER'] = 0
 
     # Drop diminished columns
-    df.drop(columns = ['index', 'CIGEVER', 'SMKLSSEVR', 'CIGAREVR', 'PIPEVER',
+    df.drop(columns = ['CIGEVER', 'SMKLSSEVR', 'CIGAREVR', 'PIPEVER',
         'ALCEVER', 'MJEVER', 'COCEVER', 'CRKEVER', 'HEREVER', 'HALLUCEVR',
-        'INHALEVER', 'METHAMEVR', 'PNRANYLIF', 'TRQANYLIF', 'STMANYLIF',
-        'SEDANYLIF', 'PNRNMLIF', 'COLDMEDS'], inplace = True)
+        'INHALEVER', 'METHAMEVR', 'PNRNMLIF', 'COLDMEDS'], inplace = True)
     return df
 
 def imputer(df, drop=True):
@@ -150,11 +147,11 @@ def imputer(df, drop=True):
     imputation done covers data loss from the nature of census style
     collection. Imputation gives following improvment in data:
 
-        Without Imputing -- Total NaNs: 75,486
-                         -- Rows Lost if Dropped: 13,319 of 13,397
+        Without Imputing -- Total NaNs: 75,483
+                         -- Rows Lost if Dropped: 13,316 of 13,397
 
-        With Imputing    -- Total NaNs: 16,775
-                         -- Rows Lost if Dropped: 3,206 of 13,397
+        With Imputing    -- Total NaNs: 16,772
+                         -- Rows Lost if Dropped: 3,203 of 13,397
 
     Parameters
     ----------
