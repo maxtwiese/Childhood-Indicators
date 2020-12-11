@@ -111,7 +111,7 @@ ytl = [
 'How would you feel if someone your\nage used Marijuana monthly?',
 'How would you feel if someone your\nage tried Marijuana?',
 'How would you feel if your friend\nused Marijuana monthly?',
-'How would you feel if someone your\nage drank daily',
+'How would you feel if someone your\nage drank daily?',
 '# Students in your grade that\nget drunk',
 'How would you feel if your friend\ntried Marijuana?',
 'How often do you fight\nwith your parents?',

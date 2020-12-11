@@ -16,7 +16,7 @@
 
 ## <a name="Motivation">Motivation</a>
 
-Addiction is a lion of a problem. According to a Treatment Episode Data Set [Report](https://www.samhsa.gov/data/sites/default/files/WebFiles_TEDS_SR142_AgeatInit_07-10-14/TEDS-SR142-AgeatInit-2014.pdf) published in 2014, the younger a patient had started to experiment with substances the more likely they were to be seeking treatment for multiple substances at time of admittance. In this, I saw a small part of the problem I could address and work towards improving.
+According to a Treatment Episode Data Set [Report](https://www.samhsa.gov/data/sites/default/files/WebFiles_TEDS_SR142_AgeatInit_07-10-14/TEDS-SR142-AgeatInit-2014.pdf) published in 2014, the younger a patient had started to experiment with substances the more likely they were to be seeking treatment for multiple substances at time of admittance. In this, I saw a small part of the larger addiciton problem I could address and work towards improving.
 
 If the most important indicators for adolescent experimentation can be determined, then we can determine how to best delay substance experimentation until adulthood. This focus on delay instead of abstinence simplifies the problem and still yields a positive: a reduction in total dependencies to battle. To start, I will focus on determining underage drinking.
 
